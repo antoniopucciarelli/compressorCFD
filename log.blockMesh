@@ -1,0 +1,77 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-2c6a80318abb
+Exec   : blockMesh
+Date   : Jul 25 2022
+Time   : 15:21:44
+Host   : "DELL"
+PID    : 30377
+I/O    : uncollated
+Case   : /home/antoniopucciarelli/OpenFOAM/antoniopucciarelli-10/run/rotorMesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.045 .. 0.045
+        j : 0.04 .. 0.04
+        k : 0.14 .. 0.14
+
+There are no merge patch pairs edges
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-0.3 -0.1 -0.1) (0.6 0.1 0.6)
+  nPoints: 756
+  nCells: 500
+  nFaces: 1725
+  nInternalFaces: 1275
+----------------
+Patches
+----------------
+  patch 0 (start: 1275 size: 200) name: frontAndBack
+  patch 1 (start: 1475 size: 25) name: inlet
+  patch 2 (start: 1500 size: 25) name: outlet
+  patch 3 (start: 1525 size: 100) name: lowerWall
+  patch 4 (start: 1625 size: 100) name: upperWall
+
+End
+
