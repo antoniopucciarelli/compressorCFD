@@ -132,7 +132,15 @@ castellatedMeshControls
                         inGroups (rotor);
                     }
                 }
+	    }
+	}
 
+	stator
+	{
+	    level (2 3);
+	    
+	    region
+	    {
                 statorBladeTop
                 {
                     level (4 5);

@@ -15,25 +15,76 @@ FoamFile
 
 convertToMeters 1;
 
+// inlet/outlet position 
+xInlet   -0.1;
+xOutlet   0.4;
+
+// hub/tip radius
+hubRadius 0.3;
+tipRadius 0.56;
+
+// opening angle 
+semiAngle 15.0;
+
+// angles -> related to 
+cosine    0.96;
+sine      0.258;
+
+// point0
+y0 #calc "$hubRadius * $sine";
+z0 #calc "$hubRadius * ($cosine - 1)";
+
+// point1
+y1 #calc "-$y0";
+z1 #calc "$z0";
+
+// point2
+y2 #calc "$y1";
+z2 #calc "$z1";
+
+// point3
+y3 #calc "$y0";
+z3 #calc "$z0";
+
+// point4 
+y4 #calc "$tipRadius * $sine";
+z4 #calc "$tipRadius * ($cosine - 1) + ($tipRadius - $hubRadius)";
+
+// point5
+y5 #calc "-$y4";
+z5 #calc "$z4";
+
+// point6 
+y6 #calc "$y5";
+z6 #calc "$z5";
+
+// point7
+y7 #calc "$y4";
+z7 #calc "$z4";
+
 vertices
 (
-    (-0.3  -0.1 -0.1)
-    ( 0.6  -0.1 -0.1)
-    ( 0.6   0.1 -0.1)
-    (-0.3   0.1 -0.1)
-    (-0.3  -0.1  0.6)
-    ( 0.6  -0.1  0.6)
-    ( 0.6   0.1  0.6)
-    (-0.3   0.1  0.6)
+    ($xInlet  $y0 $z0)
+    ($xInlet  $y1 $z1)
+    ($xOutlet $y2 $z2)
+    ($xOutlet $y3 $z3)
+    ($xInlet  $y4 $z4)
+    ($xInlet  $y5 $z5)
+    ($xOutlet $y6 $z6)
+    ($xOutlet $y7 $z7)
 );
 
 blocks
 (
-    hex (0 1 2 3 4 5 6 7) (20 5 5) simpleGrading (1 1 1)
+    hex (0 1 2 3 4 5 6 7) (40 80 40) simpleGrading (1 1 1)
 );
 
 edges
 (
+    arc 0 1 ($xInlet 0.0 0.0)
+    arc 4 5 ($xInlet 0.0 #calc "$tipRadius - $hubRadius")
+    arc 3 2 ($xOutlet 0.0 0.0)
+    arc 7 6 ($xOutlet 0.0 #calc "$tipRadius - $hubRadius")
 );
 
 boundary
