@@ -4,16 +4,6 @@ cd ${0%/*} || exit 1    # run from this directory
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
-<<<<<<< HEAD
-# moving stator stator position 
-surfaceTransformPoints translate="(0.2 0 -1e-2)" constant/triSurface/stator.bak.stl constant/triSurface/stator.stl
-surfaceTransformPoints translate="(0.0 0 -1e-2)" constant/triSurface/rotor.bak.stl constant/triSurface/rotor.stl
-
-runApplication 	blockMesh
-runApplication 	surfaceFeatures
-runApplication 	decomposePar 
-runParallel 	snappyHexMesh
-=======
 # moving stator/rotor 
 surfaceTransformPoints translate="(0.2 0 -1e-1)" constant/triSurface/stator.bak.stl constant/triSurface/stator.stl
 surfaceTransformPoints translate="(0.0 0 -1e-1)" constant/triSurface/rotor.bak.stl constant/triSurface/rotor.stl
@@ -23,7 +13,6 @@ runApplication 	surfaceFeatures
 runApplication 	decomposePar
 runParallel 	snappyHexMesh
 runApplication 	reconstructParMesh
->>>>>>> oldBranch
 
 # end-of-file
 #--------------
