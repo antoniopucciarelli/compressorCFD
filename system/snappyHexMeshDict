@@ -13,8 +13,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 castellatedMesh on;
-snap            on;
-addLayers       on;
+snap            off;
+addLayers       off;
 
 geometry
 {
@@ -65,33 +65,26 @@ geometry
 	    }
         }
     }
-
-//  refinementBox
-//  {
-//      type searchableBox;
-//      min (-0.3 0.0 -0.195);
-//      max ( 1.5 0.3  0.2  );
-//  }
 };
 
 castellatedMeshControls
 {
     maxLocalCells 		10000;
     maxGlobalCells 		200000;
-    minRefinementCells 		10;
+    minRefinementCells 		3;
     maxLoadUnbalance 		0.10;
     nCellsBetweenLevels 	3;
 
     features
     (
         {
-            file "rotor.eMesh";
-            level 4;
+            file 	"rotor.eMesh";
+            levels 	((4 4));
         }
 
 	{
-	    file "stator.eMesh";
-	    level 4;
+	    file 	"stator.eMesh";
+	    levels 	((4 4)); 
 	}
     );
 
@@ -132,15 +125,7 @@ castellatedMeshControls
                         inGroups (rotor);
                     }
                 }
-	    }
-	}
 
-	stator
-	{
-	    level (2 3);
-	    
-	    region
-	    {
                 statorBladeTop
                 {
                     level (4 5);
@@ -177,18 +162,9 @@ castellatedMeshControls
     // Resolve sharp angles
     resolveFeatureAngle 10;
 
-//  refinementRegions
-//  {
-//      refinementBox
-//      {
-//          mode inside; //outside, distance
-//          levels ((1e15 4 ));
-//      }
-//  }
-
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    locationInMesh (-0.1 0 0);
+    locationInMesh (-1e-2 0.0 0.15);
 
     allowFreeStandingZoneFaces true;
 }
